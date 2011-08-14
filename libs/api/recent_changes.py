@@ -6,13 +6,18 @@ class RecentChanges(query.Query):
     def __init__(self):
         super(RecentChanges, self).__init__()
         self.changes = []
-
+        
+        # Set default options
+        self.rcprop = 'title'
+        self.rclimit = 3
+        
     def get(self, rcprop='title'):
         '''Run the query to get the results'''
         self.query({
                 'list': 'recentchanges',
-                'rcprop': rcprop,  # TODO: figure out how to use this
-                'rclimit': 3
+                'rcprop': self.rcprop,  # TODO: figure out how to use this
+                'rclimit': self.rclimit
                 })
+        self.changes = self.data['query']['recentchanges']
 
     
