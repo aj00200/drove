@@ -1,4 +1,4 @@
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import json
 
 import config
@@ -11,6 +11,6 @@ class Query(object):
             url += '&%s=%s' % (parameter, parameters[parameter])
         
         # Request the URL and parse results
-        request = urllib2.urlopen(url)
-        self.data = json.load(request)
+        request = urllib.request.urlopen(url)
+        self.data = json.loads(request.read().decode())
         request.close()

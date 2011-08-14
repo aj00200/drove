@@ -1,7 +1,7 @@
 import config
-import query
+import libs.api.query
 
-class RecentChanges(query.Query):
+class RecentChanges(libs.api.query.Query):
     '''Queries the recent changes feed.'''
     def __init__(self):
         super(RecentChanges, self).__init__()
