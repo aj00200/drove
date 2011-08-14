@@ -15,4 +15,6 @@ class TestQuery(unittest.TestCase):
             'rcprop': 'title',
             'rclimit': 3
         })
+        self.assertIsNotNone(self.query.data,
+                'self.data is not being stored in Query()')
         

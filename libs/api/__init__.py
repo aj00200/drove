@@ -1,2 +1,2 @@
-import query
-import recent_changes
+import libs.api.query
+import libs.api.recent_changes
