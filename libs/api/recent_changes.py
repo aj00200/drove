@@ -8,16 +8,16 @@ class RecentChanges(libs.api.query.Query):
         self.changes = []
         
         # Set default options
-        self.rcprop = 'title'
+        self.defaults = {
+            'list': 'recentchanges',
+            'rcprop': 'title|ids|sizes|flags|user',
+            'rclimit': 3}
         self.rclimit = 3
         
-    def get(self, rcprop='title'):
+    def get(self, parameters={}):
         '''Run the query to get the results'''
-        self.query({
-                'list': 'recentchanges',
-                'rcprop': self.rcprop,  # TODO: figure out how to use this
-                'rclimit': self.rclimit
-                })
+        self.defaults.update(parameters)
+        self.query(self.defaults)
         self.changes = self.data['query']['recentchanges']
 
     
